@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Contato - OneStore</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background-color: #f9f9f9;
+    }
+
+    aside {
+      width: 250px;
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      height: 100vh;
+    }
+
+    aside h2 {
+      font-size: 1.5em;
+      color: #00c4cc;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    nav a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid #333;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #444;
+      padding-left: 10px;
+    }
+
+    main {
+      margin-left: 250px;
+      padding: 40px;
+      flex-grow: 1;
+    }
+
+    .contato-container {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .contato-container img {
+      width: 300px;
+      margin-bottom: 20px;
+    }
+
+    .contato-container h2 {
+      margin-bottom: 10px;
+    }
+
+    .contato-container p {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .info-contato {
+      font-size: 16px;
+      text-align: left;
+      line-height: 2;
+      margin-top: 30px;
+    }
+
+    .info-contato span {
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    .info-contato a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .info-contato a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 10px;
+      color: #888;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <aside>
+    <h2>OneStore</h2>
+    <nav>
+      <a href="Catalogo.html">👕 Home</a>
+      <a href="Contato.html">📞 Contato</a>
+      <a href="MeuCarrinho.html">🛒 Meu carrinho</a>
+      <a href="MeusPedidos.html">🧾 Meus Pedidos</a>
+      <a href="Login.html">❌ Sair</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="contato-container">
+      <img src="imagens\fale-conosco.jpg" alt="Fale Conosco">
+
+      <h2>Queremos ouvir o que você tem a dizer!</h2>
+      <p>Se você tem alguma dúvida ou sugestão, entre em contato conosco:</p>
+
+      <div class="info-contato">
+        <p><span>📧</span> <a href="mailto:contato@onestore.com">Enviar um e-mail</a></p>
+        <p><span>📞</span> (31) 98757-8298</p>
+        <p><span>🏠</span> Av. Amazonas, 650 - Centro, Belo Horizonte/MG</p>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Roupas</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background-color: #f9f9f9;
+    }
+
+    aside {
+      width: 250px;
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      height: 100vh;
+    }
+
+    aside h2 {
+      margin-bottom: 30px;
+      font-size: 1.5em;
+      text-align: center;
+      color: #00c4cc;
+    }
+
+    .topo-menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .topo-menu h2 {
+      font-size: 1.5em;
+      color: #00c4cc;
+    }
+
+    .botao-sair {
+      background: none;
+      border: none;
+      color: red;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+
+    nav a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid #333;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #444;
+      padding-left: 10px;
+    }
+
+    main {
+      margin-left: 250px;
+      padding: 30px;
+      flex-grow: 1;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 6px;
+      width: 200px;
+    }
+
+    .procurar-button {
+      padding: 6px 12px;
+      background-color: #00c4cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cadastrar-button {
+      padding: 6px 12px;
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #eee;
+    }
+
+    .acoes a {
+      margin-right: 10px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .acoes a:hover {
+      text-decoration: underline;
+    }
+
+    .links-topo {
+      margin-top: 10px;
+    }
+
+    .paginacao {
+      margin-top: 10px;
+    }
+
+    .paginacao button {
+      margin: 0 3px;
+      padding: 4px 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <aside>
+    <h2>OneStore</h2>
+    <nav>
+      <a href="GerenciarRoupas.html">👕 Gerenciar Roupas</a>
+      <a href="GerenciarCategorias.html">📂 Categorias</a>
+      <a href="GerenciarPedidos.html">🧾 Pedidos</a>
+      <a href="RelatorioVendas.html">📊 Relatório de Vendas</a>
+      <a href="Login.html">❌ Sair</a>
+    </nav>
+  </aside>
+
+  <main>
+    <h1>Roupas</h1>
+
+    <input type="text" id="filtro" placeholder="filtro">
+    <button class="procurar-button" onclick="filtrar()">Procurar</button>
+    <button class="cadastrar-button" onclick="irParaCadastroDeRoupa()">Cadastrar Roupa</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nome da roupa</th>
+          <th>Preço da roupa</th>
+          <th>Em destaque?</th>
+          <th>Em estoque?</th>
+          <th>Categoria</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-roupas">
+      </tbody>
+    </table>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="GerenciarRoupas.js"></script>
+</body>
+</html>

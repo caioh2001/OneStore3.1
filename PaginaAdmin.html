@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel do Administrador</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    aside {
+      width: 250px;
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      height: 100vh;
+    }
+
+    aside h2 {
+      margin-bottom: 30px;
+      font-size: 1.5em;
+      text-align: center;
+      color: #00c4cc;
+    }
+
+    nav a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid #333;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #444;
+      padding-left: 10px;
+    }
+
+    main {
+      margin-left: 250px;
+      padding: 30px;
+      flex-grow: 1;
+    }
+
+    .titulo {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    .descricao {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <aside>
+    <h2>OneStore</h2>
+    <nav>
+      <a href="GerenciarRoupas.html">👕 Gerenciar Roupas</a>
+      <a href="GerenciarCategorias.html">📂 Categorias</a>
+      <a href="GerenciarPedidos.html">🧾 Pedidos</a>
+      <a href="RelatorioVendas.html">📊 Relatório de Vendas</a>
+      <a href="Login.html">❌ Sair</a>
+    </nav>
+  </aside>
+
+  <main>
+    <h1 class="titulo">Bem-vindo ao Painel do Administrador</h1>
+    <p class="descricao">Selecione uma opção no menu lateral para começar a gerenciar o conteúdo da loja.</p>
+  </main>
+
+</body>
+</html>

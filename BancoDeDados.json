@@ -1,0 +1,175 @@
+{
+  "login": [
+    {
+      "id": "1",
+      "nome": "Lucas Siqueira",
+      "login": "siqueira@gmail.com",
+      "senha": "478569"
+    },
+    {
+      "id": "2",
+      "nome": "Lucas Siqueira",
+      "login": "teste@gmail.com",
+      "senha": "478569"
+    },
+    {
+      "id": "3",
+      "nome": "Lucas Siqueira",
+      "login": "caio@gmail.com",
+      "senha": "478569"
+    },
+    {
+      "id": "82c9",
+      "nome": "Caio",
+      "login": "caio@gmail.com",
+      "senha": "1234"
+    },
+    {
+      "id": "a9ca",
+      "nome": "Caio Teste",
+      "login": "asdsadlak@gmail.com",
+      "senha": "teste@2014"
+    },
+    {
+      "id": "8e75",
+      "nome": "Admin",
+      "login": "admin@onestore.com",
+      "senha": "Ronaldo@15078"
+    },
+    {
+      "id": "b9d7",
+      "nome": "Caio Henrique",
+      "login": "caio.henrique.2011@gmail.com",
+      "senha": "caio@2014"
+    }
+  ],
+  "roupas": [
+    {
+      "id": "2",
+      "roupaNome": "Jaqueta de couro",
+      "roupaDescricao": "Jaqueta masculina feita em couro.",
+      "roupaPreco": 199.99,
+      "roupaUrlImagem": "imagens/jaqueta-couro.jpg",
+      "roupaDestaque": false,
+      "emEstoque": true,
+      "categoriaId": 2
+    },
+    {
+      "id": "3",
+      "roupaNome": "Jaqueta Jeans Oversized",
+      "roupaDescricao": "Jaqueta jeans modelo oversized, unissex.",
+      "roupaPreco": 249.5,
+      "roupaUrlImagem": "imagens/jaqueta-oversized.jpg",
+      "roupaDestaque": true,
+      "emEstoque": false,
+      "categoriaId": 3
+    },
+    {
+      "id": "d430",
+      "roupaNome": "Blusa Oversized",
+      "roupaDescricao": "Blusa Oversized feita com Algodao 30.1",
+      "roupaPreco": 150,
+      "roupaUrlImagem": "imagens/blusa-oversized.jpg",
+      "categoriaId": 1,
+      "roupaDestaque": true,
+      "emEstoque": false
+    },
+    {
+      "id": "958a",
+      "roupaNome": "Jaqueta College",
+      "roupaDescricao": "Jaqueta College feita com Algodao 30.1 na cor cinza",
+      "roupaPreco": 750,
+      "roupaUrlImagem": "imagens/jaqueta-college.jpg",
+      "categoriaId": 3,
+      "roupaDestaque": false,
+      "emEstoque": true
+    },
+    {
+      "id": "62a1",
+      "roupaNome": "Jaqueta Bege",
+      "roupaDescricao": " Jaqueta de Poliester na cor Bege.",
+      "roupaPreco": 455,
+      "roupaUrlImagem": " imagens/jaqueta-bege.jpg",
+      "categoriaId": 3,
+      "roupaDestaque": false,
+      "emEstoque": true
+    }
+  ],
+  "categorias": [
+    {
+      "id": "1",
+      "nome": "Camiseta",
+      "descricao": "Camisetas de todos os tipos."
+    },
+    {
+      "id": "5dc3",
+      "nome": "Calças",
+      "descricao": "Calças de todos os tipos."
+    }
+  ],
+  "pedidos": [
+    {
+      "id": "0b37",
+      "idUsuario": "admin@localhost",
+      "cliente": "teste ",
+      "endereco": "Rua das marias",
+      "pagamento": "Pix",
+      "itens": [
+        {
+          "id": "2",
+          "nome": "Jaqueta de couro",
+          "preco": 199.99,
+          "imagem": "imagens/jaqueta-couro.jpg"
+        },
+        {
+          "id": "3",
+          "nome": "Jaqueta Jeans Oversized",
+          "preco": 249.5,
+          "imagem": "imagens/jaqueta-oversized.jpg"
+        }
+      ]
+    },
+    {
+      "id": "732a",
+      "idUsuario": "admin@localhost",
+      "cliente": "Caio Henrique",
+      "endereco": "Rua das Marias, 5",
+      "pagamento": "Pix",
+      "itens": [
+        {
+          "id": "2",
+          "nome": "Jaqueta de couro",
+          "preco": 199.99,
+          "imagem": "imagens/jaqueta-couro.jpg"
+        },
+        {
+          "id": "d430",
+          "nome": "Blusa Oversized",
+          "preco": 150,
+          "imagem": "imagens/blusa-oversized.jpg"
+        }
+      ]
+    },
+    {
+      "id": "99e8",
+      "idUsuario": "admin@localhost",
+      "cliente": "Caio Henrique da Silva Bento",
+      "endereco": "Rua das Marias, 5",
+      "pagamento": "Pix",
+      "itens": [
+        {
+          "id": "62a1",
+          "nome": "Jaqueta Bege",
+          "preco": 455,
+          "imagem": " imagens/jaqueta-bege.jpg"
+        },
+        {
+          "id": "2",
+          "nome": "Jaqueta de couro",
+          "preco": 199.99,
+          "imagem": "imagens/jaqueta-couro.jpg"
+        }
+      ]
+    }
+  ]
+}

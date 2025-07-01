@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Carrinho - OneStore</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background-color: #f9f9f9;
+    }
+
+    aside {
+      width: 250px;
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      height: 100vh;
+    }
+
+    aside h2 {
+      font-size: 1.5em;
+      color: #00c4cc;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    nav a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid #333;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #444;
+      padding-left: 10px;
+    }
+
+    main {
+      margin-left: 250px;
+      padding: 40px;
+      flex-grow: 1;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .carrinho-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .item-carrinho {
+      background: white;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .item-carrinho img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    .item-info {
+      flex-grow: 1;
+    }
+
+    .item-info h3 {
+      margin-bottom: 5px;
+    }
+
+    .item-info p {
+      color: #666;
+    }
+
+    .remover-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .total {
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .finalizar-btn {
+      margin-top: 20px;
+      background-color: #00c4cc;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .vazio {
+      color: #888;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <aside>
+    <h2>OneStore</h2>
+    <nav>
+      <a href="Catalogo.html">👕 Home</a>
+      <a href="Contato.html">📞 Contato</a>
+      <a href="MeuCarrinho.html">🛒 Meu Carrinho</a>
+      <a href="MeusPedidos.html">🧾 Meus Pedidos</a>
+      <a href="Login.html">❌ Sair</a>
+    </nav>
+  </aside>
+
+  <main>
+    <h1>Meu Carrinho</h1>
+    <div class="carrinho-lista" id="lista-carrinho"></div>
+
+    <div class="total" id="total-geral"></div>
+    <button class="finalizar-btn" onclick="finalizarCompra()">Finalizar Compra</button>
+  </main>
+
+  <script>
+    const carrinho = JSON.parse(localStorage.getItem('carrinho'));
+    const lista = document.getElementById('lista-carrinho');
+    const totalGeral = document.getElementById('total-geral');
+
+    function renderizarCarrinho() {
+      lista.innerHTML = '';
+      let total = 0;
+
+      if (!carrinho || carrinho.itens.length === 0) {
+        lista.innerHTML = '<p class="vazio">Seu carrinho está vazio.</p>';
+        totalGeral.innerText = '';
+        return;
+      }
+
+      carrinho.itens.forEach((item, index) => {
+        total += item.preco;
+
+        const div = document.createElement('div');
+        div.classList.add('item-carrinho');
+
+        div.innerHTML = `
+          <img src="${item.imagem}" alt="${item.nome}">
+          <div class="item-info">
+            <h3>${item.nome}</h3>
+            <p>Preço: R$ ${item.preco.toFixed(2)}</p>
+          </div>
+          <button class="remover-btn" onclick="removerItem(${index})">Remover</button>
+        `;
+
+        lista.appendChild(div);
+      });
+
+      totalGeral.innerText = `Total: R$ ${total.toFixed(2)}`;
+    }
+
+    function removerItem(index) {
+      carrinho.itens.splice(index, 1);
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      renderizarCarrinho();
+    }
+
+    function finalizarCompra() {
+      if (!carrinho || carrinho.itens.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+      }
+
+      window.location.href = 'MeusPedidos.html';
+    }
+
+    renderizarCarrinho();
+  </script>
+
+</body>
+</html>

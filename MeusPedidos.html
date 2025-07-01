@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Finalizar Pedido - OneStore</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    aside {
+      width: 250px;
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      height: 100vh;
+    }
+
+    aside h2 {
+      font-size: 1.6em;
+      color: #00c4cc;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    nav a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid #333;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #444;
+      padding-left: 10px;
+    }
+
+    main {
+      margin-left: 250px;
+      padding: 40px;
+      flex-grow: 1;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .form-pedido {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: #00c4cc;
+      outline: none;
+    }
+
+    .resumo {
+      margin-top: 30px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .resumo h3 {
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    .resumo ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .resumo li {
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .total {
+      font-weight: bold;
+      margin-top: 15px;
+      color: #222;
+    }
+
+    .btn-finalizar {
+      margin-top: 30px;
+      background-color: #00c4cc;
+      color: white;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-finalizar:hover {
+      background-color: #00a2a8;
+    }
+
+    @media (max-width: 768px) {
+      aside {
+        display: none;
+      }
+
+      main {
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .form-pedido {
+        width: 100%;
+        box-shadow: none;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <aside>
+    <h2>OneStore</h2>
+    <nav>
+      <a href="Catalogo.html">👕 Home</a>
+      <a href="Contato.html">📞 Contato</a>
+      <a href="Carrinho.html">🛒 Meu Carrinho</a>
+      <a href="GerenciarPedidos.html">🧾 Meus Pedidos</a>
+      <a href="Login.html">❌ Sair</a>
+    </nav>
+  </aside>
+
+  <main>
+    <h1>Finalizar Pedido</h1>
+
+    <form class="form-pedido" id="formPedido">
+      <label for="cliente">Nome completo</label>
+      <input type="text" id="cliente" required>
+
+      <label for="endereco">Endereço de entrega</label>
+      <input type="text" id="endereco" required>
+
+      <label for="pagamento">Forma de pagamento</label>
+      <select id="pagamento" required>
+        <option value="">Selecione...</option>
+        <option value="Pix">Pix</option>
+        <option value="Cartão de Crédito">Cartão de Crédito</option>
+        <option value="Boleto">Boleto</option>
+      </select>
+
+      <div class="resumo" id="resumo-pedido">
+      </div>
+
+      <button class="btn-finalizar" type="submit">Confirmar Pedido</button>
+    </form>
+  </main>
+
+  <script>
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || { idUsuario: '2', itens: [] };
+    const resumo = document.getElementById('resumo-pedido');
+
+    function carregarResumo() {
+      if (!carrinho.itens || carrinho.itens.length === 0) {
+        resumo.innerHTML = '<p>Seu carrinho está vazio.</p>';
+        return;
+      }
+
+      let total = 0;
+      const lista = carrinho.itens.map(item => {
+        total += item.preco;
+        return `<li>${item.nome} - R$ ${item.preco.toFixed(2)}</li>`;
+      }).join('');
+
+      resumo.innerHTML = `
+        <h3>Resumo do Pedido:</h3>
+        <ul>${lista}</ul>
+        <p class="total">Total: R$ ${total.toFixed(2)}</p>
+      `;
+    }
+
+    carregarResumo();
+
+    document.getElementById('formPedido').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!carrinho.itens || carrinho.itens.length === 0) {
+        alert('Seu carrinho está vazio!');
+        return;
+      }
+
+      const pedido = {
+        idUsuario: carrinho.idUsuario,
+        cliente: document.getElementById('cliente').value,
+        endereco: document.getElementById('endereco').value,
+        pagamento: document.getElementById('pagamento').value,
+        itens: carrinho.itens
+      };
+
+      fetch('http://localhost:3000/pedidos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(pedido)
+      })
+      .then(res => {
+        if (res.ok) {
+          alert("Pedido finalizado com sucesso!");
+          localStorage.removeItem('carrinho');
+          window.location.href = 'Catalogo.html';
+        } else {
+          alert("Erro ao finalizar pedido.");
+        }
+      })
+      .catch(err => {
+        console.error("Erro:", err);
+        alert("Erro ao conectar com o servidor.");
+      });
+    });
+  </script>
+
+</body>
+</html>
